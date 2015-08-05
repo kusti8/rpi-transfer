@@ -25,7 +25,7 @@ class Transfer:
         self.logger.addHandler(handler)
 
     def main(self):
-        self.self.logger.info('Initiating startup check')
+        self.logger.info('Initiating startup check')
         start_check()
         self.logger.info('Checking and copying files')
         copy_files()
