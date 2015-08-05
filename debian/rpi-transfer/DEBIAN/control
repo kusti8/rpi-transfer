@@ -3,7 +3,7 @@ Version: 0.1
 Architecture: all
 Maintainer: Gustav Hansen, <kusti8@gmail.com>
 Installed-Size: 47
-Depends: python-appindicator, python
+Depends: python
 Section: python
 Priority: optional
 Description: A python script to transfer files to the ext partition via the FAT partition visible to Windows and Mac
