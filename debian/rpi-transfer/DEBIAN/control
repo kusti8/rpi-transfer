@@ -1,0 +1,10 @@
+Package: rpi-transfer
+Version: 0.1
+Architecture: all
+Maintainer: Gustav Hansen, <kusti8@gmail.com>
+Installed-Size: 47
+Depends: python-appindicator, python
+Section: python
+Priority: optional
+Description: A python script to transfer files to the ext partition via the FAT partition visible to Windows and Mac
+ A python script to transfer files to the ext partition via the FAT partition visible to Windows and Mac. This script gets around the limitation of Windows and Mac not seeing the ext4 partition to edit files, by making a daemon that adds or modifies files, based on what is specified in the boot partition, the only part of the SD card visible to Windows and Mac.

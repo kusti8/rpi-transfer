@@ -1,0 +1,11 @@
+# Comments will be prefixed by a pound sign
+#
+# To delete:
+# del /home/pi/test.txt
+# Plug in the power, and your file is gone!
+#
+# To edit:
+# edit /home/pi/test.txt
+# Plug in the power, shut it back down, and you can edit the file in
+# your computer. Then, plug in the power, and your file is edited!
+#
