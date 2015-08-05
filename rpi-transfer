@@ -65,7 +65,7 @@ class Transfer:
                             if os.path.isdir(line.replace(' ', '')[4:]):
                                 shutil.copytree(line.replace(' ', '')[4:], '/mnt/rpi-transfer')
                             else:
-                                shutil.copy(line.replace(' ', '')[4:], '/mnt/rpi-transfer'))
+                                shutil.copy(line.replace(' ', '')[4:], '/mnt/rpi-transfer')
                         except (SystemExit, KeyboardInterrupt):
                             raise
                         except Exception, e:
@@ -105,7 +105,7 @@ class Transfer:
                             if os.path.isdir(line.replace(' ', '')[4:]):
                                 shutil.copytree(line.replace(' ', '')[4:], '/boot/rpi-transfer')
                             else:
-                                shutil.copy(line.replace(' ', '')[4:], '/boot/rpi-transfer'))
+                                shutil.copy(line.replace(' ', '')[4:], '/boot/rpi-transfer')
                         except (SystemExit, KeyboardInterrupt):
                             raise
                         except Exception, e:
@@ -120,7 +120,7 @@ class Transfer:
             for dirName, subdirList, fileList in os.walk('/mnt/rpi-transfer'):
                 if not os.path.isdir(dirName.replace('/mnt/rpi-transfer', '')):
                     os.mkdir(dirName.replace('/mnt/rpi-transfer', ''))
-                if dirName == '/mnt/rpi-transfer' and file_name == 'INSTRUCTIONS.txt' || dirName == '/mnt/rpi-transfer' and file_name == 'EDIT-AND-DELETE.txt':
+                if dirName == '/mnt/rpi-transfer' and file_name == 'INSTRUCTIONS.txt' or dirName == '/mnt/rpi-transfer' and file_name == 'EDIT-AND-DELETE.txt':
                     pass
                 else:
                     shutil.copy(os.path.join(dirName, file_name), dirName.replace('/mnt/rpi-transfer', ''))
@@ -129,7 +129,7 @@ class Transfer:
                 if not os.path.isdir(dirName.replace('/boot/rpi-transfer', '')):
                     os.mkdir(dirName.replace('/boot/rpi-transfer', ''))
                 for file_name in fileList:
-                    if dirName == '/boot/rpi-transfer' and file_name == 'INSTRUCTIONS.txt' || dirName == '/boot/rpi-transfer' and file_name == 'EDIT-AND-DELETE.txt':
+                    if dirName == '/boot/rpi-transfer' and file_name == 'INSTRUCTIONS.txt' or dirName == '/boot/rpi-transfer' and file_name == 'EDIT-AND-DELETE.txt':
                         pass
                     else:
                         shutil.copy(os.path.join(dirName, file_name), dirName.replace('/boot/rpi-transfer', ''))
