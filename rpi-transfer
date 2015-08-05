@@ -70,6 +70,10 @@ class Transfer:
                             raise
                         except Exception, e:
                             logger.warn('No such file/folder to edit, ' + line.replace(' ', '')[4:])
+            os.remove('/mnt/rpi-transfer/EDIT-AND-DELETE.txt')
+            edit_file = open('/mnt/rpi-transfer/EDIT-AND-DELETE.txt', 'a+')
+            edit_file.write(edit)
+            edit_file.close()
         else:
             try:
                 edit_file = open('/boot/rpi-transfer/EDIT-AND-DELETE', 'r+')
@@ -106,6 +110,11 @@ class Transfer:
                             raise
                         except Exception, e:
                             logger.warn('No such file/folder to edit, ' + line.replace(' ', '')[4:])
+            os.remove('/boot/rpi-transfer/EDIT-AND-DELETE.txt')
+            edit_file = open('/boot/rpi-transfer/EDIT-AND-DELETE.txt', 'a+')
+            edit_file.write(edit)
+            edit_file.close()
+
     def copy_files():
         if noobs is True:
             for dirName, subdirList, fileList in os.walk('/mnt/rpi-transfer'):

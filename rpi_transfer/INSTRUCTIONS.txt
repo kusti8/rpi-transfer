@@ -1,0 +1,45 @@
+-----rpi-transfer Instructions:
+
+---Quickstart:
+
+-Adding:
+Adding is as simple as creating the folders where the file resides,
+and adding the file in there. For example, say I want to add a file to /home/pi
+called test.txt.
+
+I would create this directory tree:
+_______________________SD card
+____________rpi-transfer
+________home
+_____pi
+_test.txt
+
+Then, plug in the power, and the rpi-transfer program adds it into the correct
+place! That's it!
+
+-Overwriting
+This is the same as adding. Any file will be overwritten.
+
+-Editing
+Editing can be achieved by adding the path of the file to edit into
+EDIT-AND-DELETE.txt, prefixed by edit, as so:
+
+edit /home/pi/test.txt
+
+Then, plug in the power, boot up your OS, shut it down again, plug the SD card
+back in, and you will find the file in the rpi-transfer folder, under the
+correct path. Edit the file, and boot your OS up again, and it will be written.
+That's it!
+
+-Deleting
+Deleting can be achieved by adding the path of the file to delete into
+EDIT-AND-DELETE.txt, prefixed by del, as so:
+
+del /home/pi/test.txt
+
+Then, plug in the power, boot up your OS, and your file will be deleted! That's
+it!
+
+For more information, read the README.md here:
+
+https://github.com/kusti8/rpi-transfer/README.md
