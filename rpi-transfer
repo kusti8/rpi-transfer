@@ -13,7 +13,7 @@ class Transfer:
         self.fstab = ''
         self.instructions = open('/etc/rpi_transfer/INSTRUCTIONS.txt', 'r').read()
         self.edit = open('/etc/rpi_transfer/EDIT-AND-DELETE.txt', 'r').read()
-        self.logger = logging.getself.logger(__name__)
+        self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
 
         handler = logging.FileHandler('/var/log/rpi_transfer.log')
