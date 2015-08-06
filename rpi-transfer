@@ -130,7 +130,12 @@ class Transfer:
                     else:
                         shutil.copy(os.path.join(dirName, file_name), dirName.replace('/mnt/rpi-transfer', ''))
                         os.remove(os.path.join(dirName, file_name))
-                os.remove(dirName)
+                try:
+                    os.remove(dirName)
+                except (SystemExit, KeyboardInterrupt):
+                    raise
+                except Exception, e:
+                    pass
         else:
             for dirName, subdirList, fileList in os.walk('/boot/rpi-transfer'):
                 if not os.path.isdir(dirName.replace('/boot/rpi-transfer', '')):
