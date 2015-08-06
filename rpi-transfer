@@ -107,7 +107,7 @@ class Transfer:
                             if os.path.isdir(line.replace(' ', '')[4:].replace('\n','')):
                                 shutil.copytree(line.replace(' ', '')[4:].replace('\n', ''), '/boot/rpi-transfer')
                             else:
-                                os.makedirs(os.path.join('/boot/rpi-transfer', os.path.dirname(line.replace(' ', '')[4:].replace('\n', ''))))
+                                os.makedirs('/boot/rpi-transfer' + os.path.dirname(line.replace(' ', '')[4:].replace('\n', '')))
                                 shutil.copy(line.replace(' ', '')[4:].replace('\n', ''), '/boot/rpi-transfer')
                         except (SystemExit, KeyboardInterrupt):
                             raise
