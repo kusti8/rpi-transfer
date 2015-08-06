@@ -131,13 +131,10 @@ class Transfer:
                         pass
                     else:
                         shutil.copy(os.path.join(dirName, file_name), dirName.replace('/mnt/rpi-transfer', ''))
-                        os.remove(os.path.join(dirName, file_name))
-                try:
-                    os.remove(dirName)
-                except (SystemExit, KeyboardInterrupt):
-                    raise
-                except Exception, e:
-                    pass
+            for directory in os.listdir('/mnt/rpi-transfer'):
+                if not directory == 'INSTRUCTIONS.txt' and not directory == 'EDIT-AND-DELETE.txt':
+                    shutil.rmtree(directory)
+
         else:
             for dirName, subdirList, fileList in os.walk('/boot/rpi-transfer'):
                 if not os.path.isdir(dirName.replace('/boot/rpi-transfer', '')):
@@ -150,13 +147,9 @@ class Transfer:
                         pass
                     else:
                         shutil.copy(os.path.join(dirName, file_name), dirName.replace('/boot/rpi-transfer', ''))
-                        os.remove(os.path.join(dirName, file_name))
-                try:
-                    os.remove(dirName)
-                except (SystemExit, KeyboardInterrupt):
-                    raise
-                except Exception, e:
-                    pass
+            for directory in os.listdir('/boot/rpi-transfer'):
+                if not directory == 'INSTRUCTIONS.txt' and not directory == 'EDIT-AND-DELETE.txt':
+                    shutil.rmtree(directory)
 
     def create_main(self):
         self.logger.info('Creating main folder')
