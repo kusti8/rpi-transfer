@@ -53,25 +53,24 @@ class Transfer:
                 if not line.replace(' ', '')[0] == '#':
                     if line.replace(' ', '')[:3] == 'del':
                         try:
-                            if os.path.isdir(line.replace(' ', '')[3:]):
-                                shutil.rmtree(line.replace(' ', '')[3:])
+                            if os.path.isdir(line.replace(' ', '')[3:].replace('\n', '')):
+                                shutil.rmtree(line.replace(' ', '')[3:].replace('\n', ''))
                             else:
-                                os.remove(line.replace(' ', '')[3:])
+                                os.remove(line.replace(' ', '')[3:].replace('\n', ''))
                         except (SystemExit, KeyboardInterrupt):
                             raise
                         except Exception, e:
                             self.logger.warn('No such file/folder to delete, ' + line.replace(' ', '')[3:])
                     elif line.replace(' ', '')[:4] == 'edit':
                         try:
-                            if os.path.isdir(line.replace(' ', '')[4:]):
-                                shutil.copytree(line.replace(' ', '')[4:], '/mnt/rpi-transfer')
+                            if os.path.isdir(line.replace(' ', '')[4:].replace('\n','')):
+                                shutil.copytree(line.replace(' ', '')[4:].replace('\n', ''), '/mnt/rpi-transfer')
                             else:
-                                shutil.copy(line.replace(' ', '')[4:], '/mnt/rpi-transfer')
+                                shutil.copy(line.replace(' ', '')[4:].replace('\n', ''), '/mnt/rpi-transfer')
                         except (SystemExit, KeyboardInterrupt):
                             raise
                         except Exception, e:
                             self.logger.warn('No such file/folder to edit, ' + line.replace(' ', '')[4:])
-                            raise
             os.remove('/mnt/rpi-transfer/EDIT-AND-DELETE.txt')
             edit_file = open('/mnt/rpi-transfer/EDIT-AND-DELETE.txt', 'a+')
             edit_file.write(self.edit)
@@ -94,20 +93,20 @@ class Transfer:
                 if not line.replace(' ', '')[0] == '#':
                     if line.replace(' ', '')[:3] == 'del':
                         try:
-                            if os.path.isdir(line.replace(' ', '')[3:]):
-                                shutil.rmtree(line.replace(' ', '')[3:])
+                            if os.path.isdir(line.replace(' ', '')[3:].replace('\n', '')):
+                                shutil.rmtree(line.replace(' ', '')[3:].replace('\n', ''))
                             else:
-                                os.remove(line.replace(' ', '')[3:])
+                                os.remove(line.replace(' ', '')[3:].replace('\n', ''))
                         except (SystemExit, KeyboardInterrupt):
                             raise
                         except Exception, e:
                             self.logger.warn('No such file/folder to delete, ' + line.replace(' ', '')[3:])
                     elif line.replace(' ', '')[:4] == 'edit':
                         try:
-                            if os.path.isdir(line.replace(' ', '')[4:]):
-                                shutil.copytree(line.replace(' ', '')[4:], '/boot/rpi-transfer')
+                            if os.path.isdir(line.replace(' ', '')[4:].replace('\n','')):
+                                shutil.copytree(line.replace(' ', '')[4:].replace('\n', '')], '/boot/rpi-transfer')
                             else:
-                                shutil.copy(line.replace(' ', '')[4:], '/boot/rpi-transfer')
+                                shutil.copy(line.replace(' ', '')[4:].replace('\n', ''), '/boot/rpi-transfer')
                         except (SystemExit, KeyboardInterrupt):
                             raise
                         except Exception, e:
