@@ -113,6 +113,7 @@ class Transfer:
                             raise
                         except Exception, e:
                             self.logger.warn('No such file/folder to edit, ' + line.replace(' ', '')[4:])
+                            raise
             os.remove('/boot/rpi-transfer/EDIT-AND-DELETE.txt')
             edit_file = open('/boot/rpi-transfer/EDIT-AND-DELETE.txt', 'a+')
             edit_file.write(self.edit)
