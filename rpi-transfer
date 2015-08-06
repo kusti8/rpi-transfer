@@ -32,6 +32,7 @@ class Transfer:
         self.logger.info('Checking and acting upon edit and delete files')
         self.edit_delete()
         self.logger.info("Looks like we're finished, let's exit, exiting...")
+        self.clean_up()
 
     def edit_delete(self):
         if self.noobs is True:
@@ -204,8 +205,14 @@ class Transfer:
 
         self.check_main()
 
-    def clean_up():
-        subprocess.call(['umount', '/mnt'])
+    def clean_up(self):
+        if noobs is True:
+            shutil.rmtree('/mnt/rpi-transfer')
+            self.create_main()
+            subprocess.call(['umount', '/mnt'])
+        else:
+            shutil.rmtree('/boot/rpi-transfer')
+            self.create_main()
 
 instance = Transfer()
 instance.main()
