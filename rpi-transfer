@@ -66,8 +66,9 @@ class Transfer:
                             if os.path.isdir(line.replace(' ', '')[4:].replace('\n','')):
                                 shutil.copytree(line.replace(' ', '')[4:].replace('\n', ''), '/mnt/rpi-transfer')
                             else:
-                                os.makedirs(os.path.join('/mnt/rpi-transfer', os.path.dirname(line.replace(' ', '')[4:].replace('\n', ''))))
-                                shutil.copy(line.replace(' ', '')[4:].replace('\n', ''), '/mnt/rpi-transfer')
+                                if not os.path.isdir('/mnt/rpi-transfer' + os.path.dirname(line.replace(' ', '')[4:].replace('\n', ''))):
+                                    os.makedirs('/mnt/rpi-transfer' + os.path.dirname(line.replace(' ', '')[4:].replace('\n', '')))
+                                shutil.copy(line.replace(' ', '')[4:].replace('\n', ''), '/mnt/rpi-transfer' + os.path.dirname(line.replace(' ', '')[4:].replace('\n', '')))
                         except (SystemExit, KeyboardInterrupt):
                             raise
                         except Exception, e:
@@ -113,7 +114,6 @@ class Transfer:
                             raise
                         except Exception, e:
                             self.logger.warn('No such file/folder to edit, ' + line.replace(' ', '')[4:])
-                            raise
             os.remove('/boot/rpi-transfer/EDIT-AND-DELETE.txt')
             edit_file = open('/boot/rpi-transfer/EDIT-AND-DELETE.txt', 'a+')
             edit_file.write(self.edit)
