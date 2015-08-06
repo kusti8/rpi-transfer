@@ -123,10 +123,11 @@ class Transfer:
                         pass
                     else:
                         os.mkdir(dirName.replace('/mnt/rpi-transfer', ''))
-                if dirName == '/mnt/rpi-transfer' and file_name == 'INSTRUCTIONS.txt' or dirName == '/mnt/rpi-transfer' and file_name == 'EDIT-AND-DELETE.txt':
-                    pass
-                else:
-                    shutil.copy(os.path.join(dirName, file_name), dirName.replace('/mnt/rpi-transfer', ''))
+                for file_name in fileList:
+                    if dirName == '/mnt/rpi-transfer' and file_name == 'INSTRUCTIONS.txt' or dirName == '/mnt/rpi-transfer' and file_name == 'EDIT-AND-DELETE.txt':
+                        pass
+                    else:
+                        shutil.copy(os.path.join(dirName, file_name), dirName.replace('/mnt/rpi-transfer', ''))
         else:
             for dirName, subdirList, fileList in os.walk('/boot/rpi-transfer'):
                 if not os.path.isdir(dirName.replace('/boot/rpi-transfer', '')):
