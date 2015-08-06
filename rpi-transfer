@@ -26,11 +26,11 @@ class Transfer:
 
     def main(self):
         self.logger.info('Initiating startup check')
-        start_check()
+        self.start_check()
         self.logger.info('Checking and copying files')
-        copy_files()
+        self.copy_files()
         self.logger.info('Checking and acting upon edit and delete files')
-        edit_delete()
+        self.edit_delete()
         self.logger.info("Looks like we're finished, let's exit, exiting...")
 
     def edit_delete():
@@ -180,23 +180,23 @@ class Transfer:
 
             if not os.path.isdir('/mnt/rpi-transfer'):
                 self.logger.warn('Failed to find main folder, making new one')
-                create_main()
+                self.create_main()
         else:
             #Main folder
             self.logger.info('Checking for main folder')
             if not os.path.isdir('/boot/rpi-transfer'):
                 self.logger.warn('Failed to find main folder, making new one')
-                create_main()
+                self.create_main()
 
     def start_check():
-        check_files()
+        self.check_files()
 
         self.logger.info('Checking if using NOOBS')
 
         if '/dev/mmcblk0p1  /boot' not in self.fstab:
             self.noobs = True
 
-        check_main()
+        self.check_main()
 
 instance = Transfer()
 instance.main()
