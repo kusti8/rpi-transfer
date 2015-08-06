@@ -171,7 +171,7 @@ class Transfer:
             raise
         except Exception, e:
             self.logger.error('Failed to find fstab, exiting...', exc_info=True)
-            self.clean_up(self)
+            self.clean_up()
             sys.exit(-1)
 
     def check_main(self):
@@ -181,7 +181,7 @@ class Transfer:
                 output = subprocess.check_output(['mount', '/dev/mmcblk0p1', '/mnt'])
             except subprocess.CalledProcessError as e:
                 self.logger.error('Cannot mount NOOBS boot partition, exiting...')
-                self.clean_up(self)
+                self.clean_up()
                 sys.exit(-1)
             self.logger.info('Checking for main folder')
 
