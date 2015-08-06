@@ -129,15 +129,22 @@ class Transfer:
                         pass
                     else:
                         shutil.copy(os.path.join(dirName, file_name), dirName.replace('/mnt/rpi-transfer', ''))
+                        os.remove(os.path.join(dirName, file_name))
+                os.remove(dirName)
         else:
             for dirName, subdirList, fileList in os.walk('/boot/rpi-transfer'):
                 if not os.path.isdir(dirName.replace('/boot/rpi-transfer', '')):
-                    os.mkdir(dirName.replace('/boot/rpi-transfer', ''))
+                    if dirName.replace('/boot/rpi-transfer', '') == '':
+                        pass
+                    else:
+                        os.mkdir(dirName.replace('/boot/rpi-transfer', ''))
                 for file_name in fileList:
                     if dirName == '/boot/rpi-transfer' and file_name == 'INSTRUCTIONS.txt' or dirName == '/boot/rpi-transfer' and file_name == 'EDIT-AND-DELETE.txt':
                         pass
                     else:
                         shutil.copy(os.path.join(dirName, file_name), dirName.replace('/boot/rpi-transfer', ''))
+                        os.remove(os.path.join(dirName, file_name))
+                os.remove(dirName)
 
     def create_main(self):
         self.logger.info('Creating main folder')
@@ -207,12 +214,7 @@ class Transfer:
 
     def clean_up(self):
         if self.noobs is True:
-            shutil.rmtree('/mnt/rpi-transfer')
-            self.create_main()
             subprocess.call(['umount', '/mnt'])
-        else:
-            shutil.rmtree('/boot/rpi-transfer')
-            self.create_main()
 
 instance = Transfer()
 instance.main()
