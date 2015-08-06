@@ -36,7 +36,7 @@ class Transfer:
     def edit_delete(self):
         if self.noobs is True:
             try:
-                edit_file = open('/mnt/rpi-transfer/EDIT-AND-DELETE', 'r+')
+                edit_file = open('/mnt/rpi-transfer/EDIT-AND-DELETE.txt', 'r+')
             except (SystemExit, KeyboardInterrupt):
                 raise
             except Exception, e:
@@ -46,7 +46,7 @@ class Transfer:
                 edit_file.write(self.edit)
                 edit_file.close()
 
-                edit_file = open('/mnt/rpi-transfer/EDIT-AND-DELETE', 'r+')
+                edit_file = open('/mnt/rpi-transfer/EDIT-AND-DELETE.txt', 'r+')
             edit_file_contents = edit_file.readlines()
             for line in edit_file_contents:
                 if not line.replace(' ', '')[0] == '#':
@@ -76,7 +76,7 @@ class Transfer:
             edit_file.close()
         else:
             try:
-                edit_file = open('/boot/rpi-transfer/EDIT-AND-DELETE', 'r+')
+                edit_file = open('/boot/rpi-transfer/EDIT-AND-DELETE.txt', 'r+')
             except (SystemExit, KeyboardInterrupt):
                 raise
             except Exception, e:
@@ -86,7 +86,7 @@ class Transfer:
                 edit_file.write(self.edit)
                 edit_file.close()
 
-                edit_file = open('/boot/rpi-transfer/EDIT-AND-DELETE', 'r+')
+                edit_file = open('/boot/rpi-transfer/EDIT-AND-DELETE.txt', 'r+')
             edit_file_contents = edit_file.readlines()
             for line in edit_file_contents:
                 if not line.replace(' ', '')[0] == '#':
@@ -170,6 +170,7 @@ class Transfer:
             raise
         except Exception, e:
             self.logger.error('Failed to find fstab, exiting...', exc_info=True)
+            self.clean_up()
             sys.exit(-1)
 
     def check_main(self):
@@ -179,6 +180,7 @@ class Transfer:
                 output = subprocess.check_output(['mount', '/dev/mmcblk0p1', '/mnt'])
             except subprocess.CalledProcessError as e:
                 self.logger.error('Cannot mount NOOBS boot partition, exiting...')
+                self.clean_up()
                 sys.exit(-1)
             self.logger.info('Checking for main folder')
 
@@ -201,6 +203,9 @@ class Transfer:
             self.noobs = True
 
         self.check_main()
+
+    def clean_up():
+        subprocess.call(['umount', '/mnt'])
 
 instance = Transfer()
 instance.main()
