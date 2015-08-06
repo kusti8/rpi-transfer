@@ -33,7 +33,7 @@ class Transfer:
         self.edit_delete()
         self.logger.info("Looks like we're finished, let's exit, exiting...")
 
-    def edit_delete():
+    def edit_delete(self):
         if self.noobs is True:
             try:
                 edit_file = open('/mnt/rpi-transfer/EDIT-AND-DELETE', 'r+')
@@ -115,7 +115,7 @@ class Transfer:
             edit_file.write(self.edit)
             edit_file.close()
 
-    def copy_files():
+    def copy_files(self):
         if self.noobs is True:
             for dirName, subdirList, fileList in os.walk('/mnt/rpi-transfer'):
                 if not os.path.isdir(dirName.replace('/mnt/rpi-transfer', '')):
@@ -134,7 +134,7 @@ class Transfer:
                     else:
                         shutil.copy(os.path.join(dirName, file_name), dirName.replace('/boot/rpi-transfer', ''))
 
-    def create_main():
+    def create_main(self):
         self.logger.info('Creating main folder')
         if self.noobs is True:
             os.makedirs('/mnt/rpi-transfer')
@@ -155,7 +155,7 @@ class Transfer:
             edit_file.write(self.edit)
             edit_file.close()
 
-    def check_files():
+    def check_files(self):
         # Fstab
         self.logger.info('Checking for fstab')
         try:
@@ -168,7 +168,7 @@ class Transfer:
             self.logger.error('Failed to find fstab, exiting...', exc_info=True)
             sys.exit(-1)
 
-    def check_main():
+    def check_main(self):
         if self.noobs is True:
             self.logger.info('Mounting /dev/mmcblk0p1')
             try:
@@ -188,7 +188,7 @@ class Transfer:
                 self.logger.warn('Failed to find main folder, making new one')
                 self.create_main()
 
-    def start_check():
+    def start_check(self):
         self.check_files()
 
         self.logger.info('Checking if using NOOBS')
