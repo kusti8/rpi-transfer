@@ -119,7 +119,10 @@ class Transfer:
         if self.noobs is True:
             for dirName, subdirList, fileList in os.walk('/mnt/rpi-transfer'):
                 if not os.path.isdir(dirName.replace('/mnt/rpi-transfer', '')):
-                    os.mkdir(dirName.replace('/mnt/rpi-transfer', ''))
+                    if dirName.replace('/mnt/rpi-transfer', '') == '':
+                        pass
+                    else:
+                        os.mkdir(dirName.replace('/mnt/rpi-transfer', ''))
                 if dirName == '/mnt/rpi-transfer' and file_name == 'INSTRUCTIONS.txt' or dirName == '/mnt/rpi-transfer' and file_name == 'EDIT-AND-DELETE.txt':
                     pass
                 else:
