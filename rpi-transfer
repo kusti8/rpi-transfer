@@ -206,7 +206,7 @@ class Transfer:
         self.check_main()
 
     def clean_up(self):
-        if noobs is True:
+        if self.noobs is True:
             shutil.rmtree('/mnt/rpi-transfer')
             self.create_main()
             subprocess.call(['umount', '/mnt'])
