@@ -10,6 +10,7 @@ The main script is called rpi-transfer, and everything in there is what runs. No
 - Clean up NOOBS redundancy in code
 - Add settings file
 - Add comments in code
+- Add more logging
 
 ## Quickstart:
 A quickstart is availible on the forum announcement: 
