@@ -166,7 +166,7 @@ class Transfer:
                                 shutil.copy(os.path.join(dirName, file_name), dirName.replace('/boot/rpi-transfer', ''))
             for directory in os.listdir('/boot/rpi-transfer'):
                 if (not directory == 'INSTRUCTIONS.txt') and (not directory == 'EDIT-AND-DELETE.txt'):
-                    if os.path.isdir(os.path.join('/mnt/rpi-transfer', directory)):
+                    if os.path.isdir(os.path.join('/boot/rpi-transfer', directory)):
                         shutil.rmtree(os.path.join('/boot/rpi-transfer', directory))
 
     def create_main(self):
