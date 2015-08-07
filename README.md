@@ -13,7 +13,7 @@ The main script is called rpi-transfer, and everything in there is what runs. No
 - Add more logging
 
 ## Quickstart:
-A quickstart is availible on the forum announcement: 
+A quickstart is availible on the forum announcement: https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=117616&p=799637
 
 ## License
 This is distrubuted under the GNU General Public License v2.0. A copy of this license is included.
