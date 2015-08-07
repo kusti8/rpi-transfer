@@ -138,6 +138,7 @@ class Transfer:
                     if (dirName == '/mnt/rpi-transfer' and file_name == 'INSTRUCTIONS.txt') or (dirName == '/mnt/rpi-transfer' and file_name == 'EDIT-AND-DELETE.txt'):
                         pass
                     else:
+                        print file_name
                         shutil.copy(os.path.join(dirName, file_name), dirName.replace('/mnt/rpi-transfer', ''))
             for directory in os.listdir('/mnt/rpi-transfer'):
                 if not directory == 'INSTRUCTIONS.txt' or not directory == 'EDIT-AND-DELETE.txt':
