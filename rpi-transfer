@@ -19,11 +19,11 @@ class Transfer:
             raise
         except Exception, e:
             pass
-            
+
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
 
-        handler = logging.FileHandler('/var/log/rpi_transfer.log')
+        handler = logging.FileHandler('/var/log/rpi_transfer.log', mode='w')
         handler.setLevel(logging.INFO)
 
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
