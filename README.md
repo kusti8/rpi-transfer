@@ -4,7 +4,15 @@ This script gets around the limitation of Windows and Mac not seeing the ext4 pa
 
 ## Files
 
-The main script is called rpi-transfer, and everything in there is what runs. Nothing else. Not many comments are included, which is one thing to add, but most of it should be self explanatory.
+The main script is called rpi-transfer, and everything in there is what runs. Nothing else. Not many comments are included, which is one thing to add, but most of it should be self explanatory. Under rpi_transfer are the EDIT-AND-DELETE.txt and INSTRUCTION.txt base files, and under debian are the settings for building the final .deb file.
+
+## Todo:
+- Clean up NOOBS redundancy in code
+- Add settings file
+- Add comments in code
+
+## Quickstart:
+A quickstart is availible on the forum announcement: 
 
 ## License
 This is distrubuted under the GNU General Public License v2.0. A copy of this license is included.
